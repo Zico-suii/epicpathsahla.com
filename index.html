@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="EPIC PATHSHALA - Education initiatives by Biswajit Jha for tribal children in North Bengal">
+  
+  <!-- Preconnect to external domains -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  
+  <!-- Font Preloading -->
+  <link rel="preload" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap" as="style">
+  
+  <!-- Favicon -->
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+  <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+  
+  <title>EPIC PATHSHALA - Empowering Tribal Education Through Innovation</title>
+  
+  <!-- Inline Critical CSS -->
+  <style>
+    :root {
+      --primary-color: #d95c5c;
+      --primary-dark: #b84a4a;
+      --secondary-color: #e76a6a;
+      --accent-color: #ff4d4d;
+      --text-color: #fff;
+      --text-dark: #333;
+      --background-color: #f57d7d;
+      --section-padding: 4rem 0;
+      --container-width: min(1200px, 90vw);
+      --nav-height: 70px;
+      --transition: all 0.3s ease;
+      --box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      --border-radius: 8px;
+    }
+    
+    /* Base Reset */
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: var(--nav-height);
+    }
+    
+    body {
+      font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+    
+    h1, h2, h3, h4 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 700;
+      line-height: 1.2;
+      margin-bottom: 1rem;
+    }
+    
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+    
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+    
+    ul, ol {
+      list-style: none;
+    }
+    
+    button {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font: inherit;
+    }
+    
+    /* Layout */
+    .container {
+      width: 100%;
+      max-width: var(--container-width);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+    
+    .section {
+      padding: var(--section-padding);
+      position: relative;
+    }
+    
+    /* Header */
+    header {
+      text-align: center;
+      padding: 3rem 0;
+      background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+    }
+    
+    header h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(to right, #fff, #f8f8f8);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      animation: fadeInDown 1s ease both;
+    }
+    
+    /* Navigation */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background-color: var(--secondary-color);
+      height: var(--nav-height);
+      transition: var(--transition);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(231, 106, 106, 0.98);
+      backdrop-filter: blur(10px);
+      height: 60px;
+    }
+    
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      height: 100%;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: var(--border-radius);
+      transition: var(--transition);
+    }
+    
+    .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.2);
+    }
+    
+    /* Hero Slider */
+    .hero {
+      position: relative;
+      height: 100vh;
+      min-height: 600px;
+      max-height: 1200px;
+      overflow: hidden;
+      margin-bottom: 3rem;
+    }
+    
+    .slideshow-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .mySlides {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1.5s ease;
+    }
+    
+    .mySlides.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    
+    .mySlides img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .slide-content {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      padding: 3rem;
+      background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+      color: white;
+      z-index: 2;
+    }
+    
+    .slide-content h2 {
+      font-size: clamp(1.8rem, 5vw, 3.5rem);
+      margin-bottom: 1rem;
+      line-height: 1.1;
+      max-width: 800px;
+    }
+    
+    .slide-content p {
+      font-size: clamp(1rem, 2vw, 1.2rem);
+      max-width: 600px;
+      opacity: 0.9;
+      margin-bottom: 1.5rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      transition: var(--transition);
+      box-shadow: var(--box-shadow);
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+    }
+    
+    .dot-container {
+      position: absolute;
+      bottom: 2rem;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 0.75rem;
+      z-index: 10;
+    }
+    
+    .dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: var(--transition);
+      border: none;
+      position: relative;
+    }
+    
+    .dot.active {
+      background-color: white;
+      transform: scale(1.2);
+    }
+    
+    /* Content Sections */
+    .content-section {
+      padding: var(--section-padding);
+    }
+    
+    .intro-text {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+    
+    .intro-text p {
+      margin-bottom: 1.5rem;
+    }
+    
+    .section-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-img img {
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+    
+    .section-stats {
+      display: flex;
+      gap: 2rem;
+      margin: 1.5rem 0;
+    }
+    
+    .stat-item {
+      text-align: center;
+    }
+    
+    .stat-number {
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--accent-color);
+    }
+    
+    /* Footer */
+    footer {
+      background-color: var(--primary-dark);
+      padding: 3rem 0;
+      color: white;
+    }
+    
+    .footer-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+    
+    .footer-column h3 {
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+    
+    .footer-column h3::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 50px;
+      height: 2px;
+      background-color: var(--accent-color);
+    }
+    
+    .footer-contact p {
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: flex-start;
+      gap: 0.5rem;
+    }
+    
+    .footer-contact i {
+      margin-top: 0.25rem;
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .social-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 50%;
+      transition: var(--transition);
+    }
+    
+    .social-link:hover {
+      background-color: var(--accent-color);
+      transform: translateY(-3px);
+    }
+    
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      font-size: 0.9rem;
+    }
+    
+    /* Loading Animation */
+    .loader {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: var(--primary-color);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      transition: opacity 0.5s ease;
+    }
+    
+    .loader-spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1.2s linear infinite;
+    }
+    
+    .loader-logo {
+      margin-top: 2rem;
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: white;
+    }
+    
+    /* Accessibility */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      white-space: nowrap;
+      border-width: 0;
+    }
+    
+    .skip-link {
+      position: absolute;
+      top: -40px;
+      left: 0;
+      background: var(--primary-color);
+      color: white;
+      padding: 12px;
+      z-index: 100;
+      transition: top 0.3s ease;
+      border-radius: 0 0 4px 0;
+      font-weight: 600;
+    }
+    
+    .skip-link:focus {
+      top: 0;
+    }
+    
+    /* Back to Top Button */
+    .back-to-top {
+      position: fixed;
+      bottom: 2rem;
+      right: 2rem;
+      width: 60px;
+      height: 60px;
+      background-color: var(--accent-color);
+      color: white;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition);
+      z-index: 99;
+      box-shadow: var(--box-shadow);
+    }
+    
+    .back-to-top.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+    
+    /* Animations */
+    @keyframes fadeInDown {
+      from {
+        opacity: 0;
+        transform: translateY(-20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes spin {
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    /* Mobile Navigation */
+    .menu-toggle {
+      display: none;
+      cursor: pointer;
+      padding: 1rem;
+      font-size: 1.5rem;
+      color: var(--text-color);
+      position: relative;
+      z-index: 101;
+    }
+    
+    @media (max-width: 992px) {
+      .navbar.scrolled {
+        height: var(--nav-height);
+      }
+      
+      .hero {
+        height: 80vh;
+        min-height: 500px;
+      }
+      
+      .slide-content {
+        padding: 2rem;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+      
+      .nav-links {
+        position: fixed;
+        top: 0;
+        left: -100%;
+        width: 85%;
+        max-width: 350px;
+        height: 100vh;
+        background-color: var(--secondary-color);
+        flex-direction: column;
+        padding: 5rem 2rem 2rem;
+        transition: transform 0.4s ease;
+        z-index: 100;
+        box-shadow: 5px 0 30px rgba(0, 0, 0, 0.2);
+      }
+      
+      .nav-links.active {
+        transform: translateX(100%);
+      }
+      
+      .section-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .back-to-top {
+        width: 50px;
+        height: 50px;
+        font-size: 1.2rem;
+        bottom: 1.5rem;
+        right: 1.5rem;
+      }
+      
+      .footer-container {
+        grid-template-columns: 1fr;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero {
+        height: 60vh;
+        min-height: 400px;
+      }
+      
+      .slide-content {
+        padding: 1.5rem;
+      }
+      
+      .dot {
+        width: 12px;
+        height: 12px;
+      }
+    }
+    
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+  
+  <!-- Non-critical CSS -->
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&family=Playfair+Display:wght@700&display=swap">
+</head>
+
+<body>
+  <!-- Loading Animation -->
+  <div class="loader" id="pageLoader">
+    <div class="loader-spinner"></div>
+    <div class="loader-logo">EPIC PATHSHALA</div>
+    <span class="sr-only">Loading...</span>
+  </div>
+
+  <!-- Skip to Content Link -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header>
+    <div class="container">
+      <h1>EPIC PATHSHALA</h1>
+    </div>
+  </header>
+
+  <!-- Navigation -->
+  <nav class="navbar" aria-label="Main navigation">
+    <div class="container nav-container">
+      <button class="menu-toggle" id="mobileMenuToggle" aria-expanded="false" aria-controls="navLinks">
+        <span>Menu</span> <i class="fas fa-bars"></i>
+      </button>
+      <ul class="nav-links" id="navLinks">
+        <li><button class="close-menu" aria-label="Close menu"><i class="fas fa-times"></i></button></li>
+        <li><a href="https://rmsst.org/" target="_blank" rel="noopener" class="nav-link">RMSST Project</a></li>
+        <li><a href="https://biswajitjha.com/" target="_blank" rel="noopener" class="nav-link">Biswajit Jha</a></li>
+        <li><a href="https://epicpublicschool.com/" target="_blank" rel="noopener" class="nav-link">Epic Public School</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Hero Slider -->
+  <section class="hero" aria-label="Image carousel">
+    <div class="slideshow-container" id="heroSlider">
+      <div class="mySlides active">
+        <img src="together2.jpg" alt="Students and teachers together at MANDABARI">
+        <div class="slide-content">
+          <h2>Empowering Tribal Education</h2>
+          <p>Transforming lives through education and community development in North Bengal</p>
+          <a href="#education" class="btn btn-hero">Explore Our Programs</a>
+        </div>
+      </div>
+      <div class="mySlides">
+        <img src="edu1.jpg" alt="Education activities at MANDABARI">
+        <div class="slide-content">
+          <h2>Quality Education</h2>
+          <p>Providing access to quality education for tribal children in remote areas</p>
+          <a href="#education" class="btn btn-hero">Learn About Our Schools</a>
+        </div>
+      </div>
+      <div class="mySlides">
+        <img src="edu2.jpg" alt="Classroom learning at MANDABARI">
+        <div class="slide-content">
+          <h2>Interactive Learning</h2>
+          <p>Creating engaging learning environments for better educational outcomes</p>
+          <a href="#education" class="btn btn-hero">See Our Teaching Methods</a>
+        </div>
+      </div>
+      <div class="mySlides">
+        <img src="fot1.jpg" alt="Football training at MANDABARI">
+        <div class="slide-content">
+          <h2>Sports Development</h2>
+          <p>Nurturing young talents through our football academy programs</p>
+          <a href="#football" class="btn btn-hero">Discover Our Sports Program</a>
+        </div>
+      </div>
+    </div>
+    <div class="dot-container" id="sliderDots">
+      <button class="dot active" aria-label="Slide 1: Empowering Tribal Education"></button>
+      <button class="dot" aria-label="Slide 2: Quality Education"></button>
+      <button class="dot" aria-label="Slide 3: Interactive Learning"></button>
+      <button class="dot" aria-label="Slide 4: Sports Development"></button>
+    </div>
+  </section>
+
+  <!-- Main Content -->
+  <main id="main-content" class="container">
+    <section class="content-section">
+      <article class="intro-text">
+        <h2 class="sr-only">About EPIC PATHSHALA</h2>
+        <p>Biswajit Jha, affectionately known as "Book Dada," is a social entrepreneur and educator dedicated to uplifting underprivileged children in North Bengal. After a successful career as a sports editor at Zee News in Delhi, he and his wife, Dr. Sanjukta Saha, left their high-profile jobs to return to their roots in Mendabari, a tribal village in West Bengal. There, they founded the Ranjganj Maa Sarada Shishu Tirtha Charitable Educational Society, which runs a free school and football academy for tribal children.</p>
+        <p>Jha's initiatives include establishing free coaching centers and providing educational support to children in Mendabari and surrounding areas. He employs local teachers and receives support from donors to sustain these efforts. His work has impacted over a thousand children, offering them opportunities for education and personal growth.</p>
+        <p>Through his dedication, Jha has become a beacon of hope for many, demonstrating that one individual's commitment can lead to transformative change in a community. <a href="https://biswajitjha.com/" target="_blank" rel="noopener" class="btn">Learn More About Biswajit Jha</a></p>
+      </article>
+
+      <div class="section-grid" id="education">
+        <div class="section-img">
+          <img src="edu2.jpg" alt="Education activities at EPIC PATHSHALA" width="800" height="500">
+        </div>
+        <div class="section-text">
+          <h2>Education</h2>
+          <p>Biswajit Jha, known as "Book Dada," is a social entrepreneur dedicated to uplifting underprivileged children in North Bengal. He co-founded Epic Public School in Cooch Behar in 2013, focusing on inclusive education, and later initiated the Mandabari Model Tribal Village project in Alipurduar in 2021. These initiatives offer free coaching, computer labs, and libraries to tribal children, aiming to bridge educational gaps and create self-employment opportunities.</p>
+          <div class="section-stats">
+            <div class="stat-item">
+              <div class="stat-number">15+</div>
+              <div class="stat-label">Schools Established</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">200+</div>
+              <div class="stat-label">Teachers Trained</div>
+            </div>
+          </div>
+          <a href="EDUCATION.html" class="btn">Learn More</a>
+        </div>
+      </div>
+
+      <div class="section-grid" id="computer">
+        <div class="section-img">
+          <img src="computer2.jpg" alt="Students learning computers at EPIC PATHSHALA" width="800" height="500">
+        </div>
+        <div class="section-text">
+          <h2>Computer Learning</h2>
+          <p>Biswajit Jha has significantly advanced computer education for underprivileged students in North Bengal. At Epic Public School in Cooch Behar, he established a computer lab to provide students with essential digital skills, bridging the technological divide in rural areas. Additionally, his free coaching center in Mendabari includes computer literacy programs, empowering tribal children with vital IT and AI knowledge for future opportunities.</p>
+          <div class="section-stats">
+            <div class="stat-item">
+              <div class="stat-number">10+</div>
+              <div class="stat-label">Computer Labs</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">500+</div>
+              <div class="stat-label">Students Trained</div>
+            </div>
+          </div>
+          <a href="COMPUTER LEARNING.html" class="btn">Discover More</a>
+        </div>
+      </div>
+
+      <div class="section-grid" id="dance">
+        <div class="section-img">
+          <img src="dance1.jpg" alt="Dance performance by students" width="800" height="500">
+        </div>
+        <div class="section-text">
+          <h2>Dance Academy</h2>
+          <p>Biswajit Jha, known as "Book Dada," has significantly contributed to dance education for underprivileged students in North Bengal. In Mendabari, a tribal village, he established a modern dance school as part of his initiative to reintegrate school dropouts and empower girls. This program not only fosters cultural expression but also instills confidence and discipline among the youth, offering them a platform to showcase their talents.</p>
+          <div class="section-stats">
+            <div class="stat-item">
+              <div class="stat-number">50+</div>
+              <div class="stat-label">Performances</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">3</div>
+              <div class="stat-label">National Awards</div>
+            </div>
+          </div>
+          <a href="DANCE ACADEMY.html" class="btn">Explore Programs</a>
+        </div>
+      </div>
+
+      <div class="section-grid" id="football">
+        <div class="section-img">
+          <img src="fot1.jpg" alt="Football training session" width="800" height="500">
+        </div>
+        <div class="section-text">
+          <h2>Football Academy</h2>
+          <p>Biswajit Jha's football academy in Mendabari provides tribal children with opportunities to develop athletic skills while continuing their education. The academy has produced several talented players who have competed at district and state levels. Combining sports with academics, the program teaches discipline, teamwork, and perseverance, offering a pathway to potential sports scholarships and careers.</p>
+          <div class="section-stats">
+            <div class="stat-item">
+              <div class="stat-number">100+</div>
+              <div class="stat-label">Trained Players</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">15</div>
+              <div class="stat-label">State Level Players</div>
+            </div>
+          </div>
+          <a href="FOOTBALL ACADEMY.html" class="btn">View Academy Details</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-container">
+        <div class="footer-column">
+          <h3>About Us</h3>
+          <p>EPIC PATHSHALA is an initiative by Biswajit Jha to provide quality education and sports training to tribal children in North Bengal. Our mission is to empower underprivileged communities through education and skill development.</p>
+        </div>
+        
+        <div class="footer-column footer-contact">
+          <h3>Contact Us</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Mandabari, Alipurduar, West Bengal, India - 736121</p>
+          <p><i class="fas fa-phone"></i> +91 9800106628</p>
+          <p><i class="fas fa-envelope"></i> epicpathshala123@gmail.com</p>
+          
+          <div class="social-links">
+            <a href="https://www.youtube.com/c/EpicPathshala" target="_blank" rel="noopener" class="social-link" aria-label="YouTube">
+              <i class="fab fa-youtube"></i>
+            </a>
+            <a href="https://www.facebook.com/EpicPathshala" target="_blank" rel="noopener" class="social-link" aria-label="Facebook">
+              <i class="fab fa-facebook-f"></i>
+            </a>
+            <a href="https://twitter.com/Epic_Pathshala" target="_blank" rel="noopener" class="social-link" aria-label="Twitter">
+              <i class="fab fa-twitter"></i>
+            </a>
+            <a href="https://www.instagram.com/epicpathshala" target="_blank" rel="noopener" class="social-link" aria-label="Instagram">
+              <i class="fab fa-instagram"></i>
+            </a>
+          </div>
+        </div>
+        
+        <div class="footer-column">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="#education">Education Programs</a></li>
+            <li><a href="#computer">Computer Learning</a></li>
+            <li><a href="#dance">Dance Academy</a></li>
+            <li><a href="#football">Football Academy</a></li>
+            <li><a href="https://epicpublicschool.com/" target="_blank">Epic Public School</a></li>
+          </ul>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2025 EPIC PATHSHALA. All Rights Reserved. | Designed with <i class="fas fa-heart" style="color: var(--accent-color);"></i> by Team EPIC</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Back to Top Button -->
+  <button class="back-to-top" id="backToTop" aria-label="Back to top">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- Font Awesome -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+  <!-- Main JavaScript -->
+  <script>
+    // Wait for DOM and all assets to load
+    window.addEventListener('load', function() {
+      // Hide loader
+      document.getElementById('pageLoader').style.opacity = '0';
+      setTimeout(function() {
+        document.getElementById('pageLoader').style.display = 'none';
+      }, 500);
+      
+      // Initialize all functionality
+      initNavigation();
+      initSlider();
+      initBackToTop();
+    });
+    
+    // Navigation functionality
+    function initNavigation() {
+      const mobileMenuToggle = document.getElementById('mobileMenuToggle');
+      const navLinks = document.getElementById('navLinks');
+      const closeMenu = document.querySelector('.close-menu');
+      
+      mobileMenuToggle.addEventListener('click', function() {
+        const isExpanded = this.getAttribute('aria-expanded') === 'true';
+        this.setAttribute('aria-expanded', !isExpanded);
+        navLinks.classList.toggle('active');
+      });
+      
+      closeMenu.addEventListener('click', function() {
+        mobileMenuToggle.setAttribute('aria-expanded', 'false');
+        navLinks.classList.remove('active');
+      });
+      
+      // Close menu when clicking on a link
+      document.querySelectorAll('.nav-link').forEach(link => {
+        link.addEventListener('click', function() {
+          mobileMenuToggle.setAttribute('aria-expanded', 'false');
+          navLinks.classList.remove('active');
+        });
+      });
+    }
+    
+    // Hero Slider functionality
+    function initSlider() {
+      const slides = document.querySelectorAll('.mySlides');
+      const dots = document.querySelectorAll('.dot');
+      let currentSlide = 0;
+      let slideInterval;
+      const slideDuration = 3000; // 3 seconds interval
+      
+      // Function to show a specific slide
+      function showSlide(index) {
+        // Hide all slides
+        slides.forEach(slide => {
+          slide.classList.remove('active');
+          slide.style.opacity = 0;
+          slide.setAttribute('aria-hidden', 'true');
+        });
+        
+        // Remove active class from all dots
+        dots.forEach(dot => {
+          dot.classList.remove('active');
+          dot.setAttribute('aria-selected', 'false');
+        });
+        
+        // Show the selected slide
+        slides[index].classList.add('active');
+        slides[index].style.opacity = 1;
+        slides[index].setAttribute('aria-hidden', 'false');
+        
+        // Activate the corresponding dot
+        dots[index].classList.add('active');
+        dots[index].setAttribute('aria-selected', 'true');
+        
+        // Update current slide index
+        currentSlide = index;
+      }
+      
+      // Function to move to the next slide
+      function nextSlide() {
+        const nextIndex = (currentSlide + 1) % slides.length;
+        showSlide(nextIndex);
+      }
+      
+      // Start the automatic slideshow
+      function startSlideshow() {
+        clearInterval(slideInterval); // Clear any existing interval
+        slideInterval = setInterval(nextSlide, slideDuration);
+      }
+      
+      // Initialize the slider
+      function initSlider() {
+        // Show first slide
+        showSlide(0);
+        
+        // Start automatic slideshow
+        startSlideshow();
+        
+        // Pause on hover
+        const slider = document.getElementById('heroSlider');
+        slider.addEventListener('mouseenter', () => {
+          clearInterval(slideInterval);
+        });
+        
+        slider.addEventListener('mouseleave', startSlideshow);
+        
+        // Dot navigation
+        dots.forEach((dot, index) => {
+          dot.addEventListener('click', () => {
+            clearInterval(slideInterval);
+            showSlide(index);
+            startSlideshow();
+          });
+        });
+        
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+          if (e.key === 'ArrowLeft') {
+            clearInterval(slideInterval);
+            showSlide((currentSlide - 1 + slides.length) % slides.length);
+            startSlideshow();
+          } else if (e.key === 'ArrowRight') {
+            clearInterval(slideInterval);
+            showSlide((currentSlide + 1) % slides.length);
+            startSlideshow();
+          }
+        });
+      }
+      
+      // Initialize the slider
+      initSlider();
+    }
+    
+    // Back to Top functionality
+    function initBackToTop() {
+      const backToTop = document.getElementById('backToTop');
+      
+      window.addEventListener('scroll', function() {
+        if (window.pageYOffset > 300) {
+          backToTop.classList.add('visible');
+        } else {
+          backToTop.classList.remove('visible');
+        }
+      });
+      
+      backToTop.addEventListener('click', function() {
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+    }
+    
+    // Skip link focus
+    document.querySelector('.skip-link').addEventListener('focus', function() {
+      this.style.top = '0';
+    });
+  </script>
+</body>
+</html>
